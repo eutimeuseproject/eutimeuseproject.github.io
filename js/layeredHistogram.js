@@ -11,10 +11,10 @@ layeredHistogram = function(_parentElement, _data) {
   this.parentElement = _parentElement;
   this.data = _data;
   this.femaleData = _data.filter(function(item){
-    return item.sex=="Female";
+    return item.SEX=="Females";
   });
   this.maleData = _data.filter(function(item){
-    return item.sex=="Male";
+    return item.SEX=="Males";
   });
   this.activity = selectedActivity(d3.select("#map-type").property("value"));
   this.initVis();
@@ -26,7 +26,9 @@ function selectedActivity(d) {
     case 'Average Work': return "act_work";
     case 'Average Leisure': return "act_leisure";
     case 'Average Personal Care': return "act_pcare";
-    case 'Average Educational Time': return "act_educ";
+    case 'Average Educational Time': return "act_educ";   
+    case 'Average Household': return "act_household"; 
+    case 'Average Travel': return "act_travel"; 
   }
 }
 
@@ -264,5 +266,5 @@ function actLabel(act){
 }
 
 function byState(item) {
-  return item.state==state;
+  return item.GEO==state;
 }

@@ -12,7 +12,7 @@ var layeredhistogram;
 // use the Queue.js library to read multiple files
 queue()
   //.defer(d3.csv, "data/datatouse.csv")
-  .defer(d3.csv, "data/yuqi_new.csv")
+  .defer(d3.csv, "data/time_use_average.csv")
   .await(analyze);
 
 function analyze(error, dataToUse){
@@ -21,19 +21,19 @@ function analyze(error, dataToUse){
   data=dataToUse;
 
   for(var i=0; i<dataToUse.length; i++){
-    data[i].act_educ = Math.round(+dataToUse[i].educ/60);
-    data[i].act_leisure = Math.round(+dataToUse[i].leisure/60);
-    data[i].act_pcare = Math.round(+dataToUse[i].pcare/60);
-    data[i].act_social = Math.round(+dataToUse[i].social/60);
-    data[i].act_sports = Math.round(+dataToUse[i].sports/60);
-    data[i].act_work = Math.round(+dataToUse[i].work/60);
+    data[i].act_educ = Math.round(+dataToUse[i].study);
+    data[i].act_leisure = Math.round(+dataToUse[i].leisure);
+    data[i].act_pcare = Math.round(+dataToUse[i].personal_care);
+    data[i].act_household= Math.round(+dataToUse[i].household);
+    data[i].act_travel = Math.round(+dataToUse[i].travel);
+    data[i].act_work = Math.round(+dataToUse[i].work);
     data[i].educ_perc = +dataToUse[i].act_educ;
     data[i].leisure_perc = +dataToUse[i].act_leisure;
     data[i].pcare_perc = +dataToUse[i].act_pcare;
-    data[i].social_perc = +dataToUse[i].act_social;
-    data[i].sports_perc = +dataToUse[i].act_sports;
     data[i].work_perc = +dataToUse[i].act_work;
-    data[i].age = +dataToUse[i].age;
+    data[i].household_perc = +dataToUse[i].act_household;
+    data[i].travel_perc = +dataToUse[i].act_travel;
+    data[i].state = +dataToUse[i].GEO;
   }
 
   //console.log(dataByState[0]);
@@ -41,14 +41,14 @@ function analyze(error, dataToUse){
 
   // Filter function
   femaleData = data.filter(function(item){
-    return item.sex=="Female";
+    return item.SEX=="Females";
   });
 
   maleData = data.filter(function(item){
-    return item.sex=="Male";
+    return item.SEX=="MaleS";
   });
 
-  colorScale.domain(["educ_perc","leisure_perc","pcare_perc","social_perc","sports_perc","work_perc"]);
+  colorScale.domain(["act_educ","lact_leisur","act_pcare","act_household","act_travel","act_work"])
 
   createVis()
 }

@@ -1,6 +1,0 @@
-baseurl: ""
-relative_permalinks: false
-markdown: kramdown
-permalink: pretty
-highlighter: rouge
-encoding: utf-8
