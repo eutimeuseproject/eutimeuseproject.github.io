@@ -82,7 +82,7 @@ var color = d3.scale.linear()
 function getText(d,selectedValue) {
     var summary=
         "<p style='font-size: 20px; text-transform: uppercase; font-weight: bold; color: #ff775c'>" + d.properties.CntryName +"</p>" +
-        "<p>" + selectedValue + ": " + d3.round(d.properties[selectedActivity(selectedValue)],2)+ " hours</p>"
+        "<p>" + selectedValue + ": " + d3.round(d.properties[selectedValue],2)+ " hours</p>"
     document.getElementById("content-1").innerHTML=summary;
 }
 
