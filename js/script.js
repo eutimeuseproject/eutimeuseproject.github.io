@@ -1,7 +1,8 @@
 var w = 500;
 var	h = 500;
 
-var colorscale = d3.scale.category10();
+//var colorscale = d3.scale.category20(); 
+var colorscale = ["#0070c0", "#ffc23c"];
 
 //Legend titles
 var LegendOptions = ['Belgium','Bulgaria'];
@@ -121,9 +122,18 @@ d3.csv("../data/TimeUse.csv", function(error, data) {
 		var countryData = {};
 
 		data.forEach(function(d) {
+
+			//countryNames = Array();
         
 	        var country = d["GEO/ACL00"];
-	        countryNames.push(country);
+
+	        if(arrayContains(country, countryNames)){
+	        	;
+	        }
+	        else{
+	        	countryNames.push(country);
+	        }
+	        
 
 	        countryData[country] = [];
 
@@ -313,7 +323,7 @@ function DrawLengend(LegendOptions){
 		  .attr("y", function(d, i){ return i * 20;})
 		  .attr("width", 10)
 		  .attr("height", 10)
-		  .style("fill", function(d, i){ return colorscale(i);})
+		  .style("fill", function(d, i){ return colorscale[i];})
 		  ;
 		//Create text next to squares
 		legend.selectAll('text')
@@ -345,4 +355,9 @@ function convert_to_minutes(d){
 
 	
 
+}
+
+function arrayContains(needle, arrhaystack)
+{
+    return (arrhaystack.indexOf(needle) > -1);
 }
