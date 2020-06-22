@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+  body {
+    text-align: center;
+  }
+  svg {
+    font: 10px sans-serif;
+  }
+</style>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<!-- Load d3.js -->
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="https://d3js.org/d3.v4.js"></script>
+<script src="//d3js.org/d3.v4.min.js"></script>
+
+
+
+<script>
+
+  // marge, rayon, couleur
+  var m = 10,
+      r = 125
+      z = d3.scale.category10();
+
+  // pie layout 
+  var pie = d3.layout.pie()
+      .value(function(d) { return +d.Minutes; })
+      .sort(function(a, b) { return b.Minutes - a.Minutes; });
+
+  // arc
+  var arc = d3.svg.arc()
+      .innerRadius(r / 2)
+      .outerRadius(r);
+
+  // chargement des données
+  d3.csv("./data/data_activity_code.csv", function(error, data_activity_code) {
+    if (error) throw error;
+
+    var dataNesting = d3.nest()
+        .key(function(d) { return d.Country_Activity; })
+        .entries(data_activity_code);
+
+    // dimensionnement des éléments
+    var svg = d3.select("body").selectAll("div")
+        .data(dataNesting)
+      .enter().append("div")
+        .style("display", "inline-block")
+        .style("width", (r + m) * 2 + "px")
+        .style("height", (r + m) * 2 + "px")
+      .append("svg")
+        .attr("width", (r + m) * 2)
+        .attr("height", (r + m) * 2)
+      .append("g")
+        .attr("transform", "translate(" + (r + m) + "," + (r + m) + ")");
+    
+    // label
+    svg.append("text")
+        .attr("dy", ".35em")
+        .attr("text-anchor", "middle")
+        .text(function(d) { return d.key; });
+
+    var g = svg.selectAll("g")
+        .data(function(d) { return pie(d.values); })
+      .enter().append("g");
+
+    // couleur en fonction du sexe et ajout de texte
+    g.append("path")
+        .attr("d", arc)
+        .style("fill", function(d) { return z(d.data.Sex); })
+      .append("title")
+        .text(function(d) { return d.data.Sex + ": " + d.data.Minutes + " minutes"; });
+    
+    // ajout de texte
+    g.filter(function(d) { return d.endAngle - d.startAngle > .2; }).append("text")
+        .attr("dy", ".35em")
+        .attr("text-anchor", "middle")
+        .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")rotate(" + angle(d) + ")"; })
+        .text(function(d) { return d.data.Sex; })
+        .attr('font-size', '1.25em');
+
+    function angle(d) {
+      var a = (d.startAngle + d.endAngle) * 90 / Math.PI - 90;
+      return a > 90 ? a - 180 : a;
+    }
+  });
+// inspired by https://bl.ocks.org/mbostock/3888852
+</script>

@@ -1,0 +1,18 @@
+body{margin:0;padding:0;font-family:sans-serif}
+#canvas{border:1px solid #000}
+#clock{color:#666;position:absolute;top:.5em;left:50vw;width:10em;margin-left:-5em;text-align:center;font-size:600%}.country{width:100%;margin:0}.countrySelect{font-weight:700;text-align:center;font-size:250%!important;color:#555!important}
+#root,body,html{height:100%;margin:0;padding:0;overflow:hidden;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;font-size:14px}.App{padding:1em;-webkit-box-sizing:border-box;box-sizing:border-box;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-wrap:nowrap;flex-wrap:nowrap;height:100%}
+#header{-ms-flex-order:0;order:0;-ms-flex:0 0 auto;flex:0 0 auto}
+#canvasWrapper{-ms-flex-order:0;order:0;-ms-flex:1 1 auto;flex:1 1 auto;overflow:hidden}
+#ticks{-ms-flex-order:0;order:0;-ms-flex:0 1 auto;flex:0 1 auto;font-size:90%;color:#aaa;font-weight:400;position:relative;height:1em;margin-top:.1em}#ticks>div{cursor:pointer;position:absolute;width:6em;margin:0;padding:0}
+#ticks>div.middle{margin-left:-3em;text-align:center}
+#ticks>div.last{margin-left:-6em;text-align:right}
+#sliderWrapper{-ms-flex-order:0;order:0;-ms-flex:0 1 auto;flex:0 1 auto}
+#select{-ms-flex-order:0;order:0;-ms-flex:0 0 auto;flex:0 0 auto;display:-ms-flexbox;display:flex;-ms-flex-pack:justify;justify-content:space-between;-ms-flex-item-align:stretch;align-self:stretch;margin:0 2em;margin-top:1em}
+#compare{-ms-flex-order:0;order:0;-ms-flex:1 1 auto;flex:1 1 auto;height:100%}
+#footer{-ms-flex-order:0;order:0;-ms-flex:0 1 auto;flex:0 1 auto;flex-direction:row;font-size:120%}
+#compare,#footer{display:-ms-flexbox;display:flex;-ms-flex-direction:row;-ms-flex-pack:justify;justify-content:space-between}
+#compare{flex-direction:row}
+#header{text-align:center;font-size:150%;font-weight:700;color:#666}.country{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column}
+#title{font-size:1.35em;font-weight:700;color:#777;width:40%;text-align:right}
+#logo{vertical-align:middle;margin-left:1em;height:1.75em;opacity:.5}.infoDialog{padding:2em}.closeButton{float:right}.graph{pointer-events:none;position:relative;top:0;left:0x;height:100%;padding:0}.label{position:absolute;display:table-cell;text-align:center;vertical-align:bottom;font-size:80%;padding:.2em .4em;border-radius:4px;color:#444;max-width:10em;font-weight:700;background-color:hsla(0,0%,100%,.8);margin-top:.5m;margin-left:-3em}
