@@ -1,0 +1,26 @@
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+q {
+    font-size: 16;
+    color: blue;
+    font-style: italic;
+}
+
+svg {
+    background-color:whitesmoke; 
+    height: 70vh;
+    margin: 10px;
+}
+
+.button {
+    fill:black;
+
+    }
+
+p {
+    font-size: 40;
+}
