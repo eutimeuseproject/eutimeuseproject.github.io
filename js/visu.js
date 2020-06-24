@@ -660,7 +660,7 @@ function start(){
 
 **********************************************************/
 
-d3.csv("data/TimeUse.csv")
+d3.csv("data/TimeUseB.csv")
     .row( (d,i) => {
         return{
             sex: d['SEX'],
