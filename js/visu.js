@@ -724,7 +724,7 @@ d3.csv("data/TimeUseB.csv")
         };
 }).get( (error, rows) => {
     time = rows    
-
+    console.log(time)
     let removed = Object.keys(time[0])
     removed.shift()
     removed.shift()
