@@ -613,6 +613,7 @@ function append_svg(id){
 
 function calculateTimeExpectancy(){
     time.forEach(element => {
+        console.log(life_expectancy)
         let expectancy = life_expectancy.find(o => o.country === element["geo"])[element["sex"]];
         for (var property in element) {
             if(`${property}` == "sex" || `${property}` == "geo"){
