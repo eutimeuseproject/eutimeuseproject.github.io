@@ -62,7 +62,7 @@ d3.csv("./data/data_activity_code.csv", type, function(error, data_activity_code
 
   label.append("input")
       .attr("type", "radio")
-      .attr("name", "fruit")
+      .attr("name", "country_activity")
       .attr("value", function(d) { return d.key; })
       .on("change", change)
     .filter(function(d, i) { return !i; })
@@ -89,5 +89,6 @@ function type(d) {
   d.Minutes = +d.Minutes;
   return d;
 }
-
+// inspired by https://bl.ocks.org/mbostock/3888852
 </script>
+
